@@ -1,0 +1,8 @@
+---
+project_name: chroniclock
+db_name: chroniclock_development
+db_user: chroniclock_dev_user
+db_password: password
+db_host: localhost
+deploy_env_vars: {}
+rbenv_install_dir: /home/ubuntu/.rbenv

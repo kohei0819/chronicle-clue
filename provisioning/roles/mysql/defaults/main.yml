@@ -1,0 +1,6 @@
+---
+mysql_root_password: password
+
+mysql_root_remote_connection_enabled: no
+mysql_log_output_table: no
+mysql_general_log: no

@@ -1,0 +1,5 @@
+---
+- name: ログイン時、作業ディレクトリに移動するように.profileを変更
+  lineinfile:
+    dest: /home/ubuntu/.profile
+    line: 'cd "{{ vagrant_initial_dir }}"'

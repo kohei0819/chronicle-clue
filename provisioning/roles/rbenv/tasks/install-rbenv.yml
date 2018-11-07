@@ -1,0 +1,52 @@
+- name: git clone rbenv
+  become: yes
+  become_user: ubuntu
+  git:
+    repo: https://github.com/sstephenson/rbenv.git
+    dest: "{{ rbenv_install_dir }}"
+    force: yes
+
+- name: git clone ruby-build
+  become: yes
+  become_user: ubuntu
+  git:
+    repo: https://github.com/sstephenson/ruby-build.git
+    dest: "{{ ruby_build_install_dir }}"
+    force: yes
+
+- name: check rbenv is installed
+  become: yes
+  become_user: ubuntu
+  shell: bash -lc "rbenv --version"
+  register: rbenv_is_installed
+  changed_when: no
+  ignore_errors: yes
+
+- name: install ruby-build
+  become: yes
+  become_user: ubuntu
+  shell: >
+    cd {{ ruby_build_install_dir }}
+    ./install.sh
+
+- name: add rbenv to path
+  become: yes
+  become_user: ubuntu
+  lineinfile: >
+    dest="{{ rbenv_install_user_dir }}/.profile"
+    line="export PATH=$HOME/.rbenv/bin:$PATH"
+  when: rbenv_is_installed is failed
+
+- name: add eval "$(rbenv init -)"
+  become: yes
+  become_user: ubuntu
+  lineinfile: >
+    dest="{{ rbenv_install_user_dir }}/.profile"
+    line='eval "$(rbenv init -)"'
+  when: rbenv_is_installed is failed
+
+- name: reload .profile
+  become: yes
+  become_user: ubuntu
+  shell: . ~/.profile
+  when: rbenv_is_installed is failed

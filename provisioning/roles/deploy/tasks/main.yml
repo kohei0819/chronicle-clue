@@ -1,0 +1,39 @@
+---
+- name: データベースの作成
+  mysql_db: name={{ db_name }}
+
+- name: データベースユーザの作成
+  mysql_user:
+    host: "{{ db_host }}"
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    priv: "{{ db_name }}.*:ALL"
+
+- name: Install mysql2
+  become: yes
+  become_user: ubuntu
+  gem:
+    name: mysql2
+    executable: "{{ rbenv_install_dir }}/shims/gem"
+
+- name: プロジェクトの作成
+  shell: "{{ rbenv_install_dir}}/shims/rails new {{ project_name }} -d mysql --webpack=vue"
+  args:
+    chdir: /vagrant
+
+- name: bundle install
+  become: yes
+  become_user: ubuntu
+  shell: "{{ rbenv_install_dir}}/shims/bundle install"
+  args:
+    chdir: /vagrant/{{ project_name }}
+
+- lineinfile:
+    path: /vagrant/{{ project_name }}/config/database.yml
+    regexp: '^\s\susername\: root$'
+    line: '  username: {{ db_user }}'
+
+- lineinfile:
+    path: /vagrant/{{ project_name }}/config/database.yml
+    regexp: '^\s\spassword\:$'
+    line: '  password: {{ db_password }}'

@@ -1,0 +1,3 @@
+---
+mysql_root_remote_connection_enabled: yes
+mysql_log_output_table: yes

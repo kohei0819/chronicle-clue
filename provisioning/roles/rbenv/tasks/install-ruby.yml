@@ -1,0 +1,27 @@
+- name: check {{ ruby_version }} is installed
+  become: yes
+  become_user: ubuntu
+  shell: bash -lc "rbenv versions | grep {{ ruby_version }}"
+  register: rbenv_is_installed
+  changed_when: no
+  ignore_errors: yes
+
+- name: install ruby
+  become: yes
+  become_user: ubuntu
+  shell: bash -lc "rbenv install {{ ruby_version }}"
+  when: rbenv_is_installed is failed
+
+- name: check {{ ruby_version }} is the default ruby version
+  become: yes
+  become_user: ubuntu
+  shell: bash -lc "rbenv version | grep {{ ruby_version }}"
+  register: is_default_ruby_set
+  changed_when: no
+  ignore_errors: yes
+
+- name: set ruby version
+  become: yes
+  become_user: ubuntu
+  shell: bash -lc "rbenv global {{ ruby_version }}"
+  when: is_default_ruby_set is failed

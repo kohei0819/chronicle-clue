@@ -1,0 +1,13 @@
+ruby_version: 2.5.3
+rails_version: 5.2.1
+rbenv_install_dir: /home/ubuntu/.rbenv
+ruby_build_install_dir: /home/ubuntu/.rbenv/plugins/ruby-build
+rbenv_install_user_dir: /home/ubuntu
+document_root: /home/ubuntu/rails5-api-prototype/public
+domain_name: dev.rails5-api.net
+mysql_root_password: Rails@RootPassword999@
+mysql_user_password: Rails@RootPassword999@
+mysql_db_name: rails5_api
+mysql_test_db_name: rails5_api_test
+mysql_db_user: rails5_api_user
+mysql_test_db_user: rails5_api_test_user

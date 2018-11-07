@@ -1,0 +1,51 @@
+---
+- name: パッケージのインストール
+  apt:
+    name:
+      - mysql-server
+      - python-mysqldb
+
+- name: 設定ファイルの編集
+  template:
+    dest: /etc/mysql/{{ item }}
+    mode: 0644
+    src: "{{ item }}.j2"
+  with_items:
+    - conf.d/client.cnf
+    - mysql.conf.d/mysqld.cnf
+  notify: MySQLの再起動
+
+- name: 起動と有効化
+  service:
+    enabled: yes
+    name: mysql
+    state: started
+
+- name: rootパスワードの変更
+  mysql_user:
+    host: localhost
+    password: "{{ mysql_root_password }}"
+    user: root
+
+- name: /root/.my.cnfの作成
+  template:
+    dest: /root/.my.cnf
+    mode: 600
+    src: root/my.cnf.j2
+
+- name: リモート接続用ルートユーザの作成
+  mysql_user:
+    host: "%"
+    name: root
+    password: "{{ mysql_root_password }}"
+    priv: "*.*:ALL"
+  when: mysql_root_remote_connection_enabled
+
+- name: リモート接続用ルートユーザの削除
+  mysql_user:
+    host: "%"
+    name: root
+    password: "{{ mysql_root_password }}"
+    priv: "*.*:ALL"
+    state: absent
+  when: not mysql_root_remote_connection_enabled

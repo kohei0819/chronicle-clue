@@ -1,0 +1,4 @@
+- include: install-rbenv.yml
+- include: install-dependent-packages.yml
+- include: install-ruby.yml
+- include: install-bundler.yml

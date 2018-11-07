@@ -1,0 +1,15 @@
+- name: Install rails
+  become: yes
+  become_user: ubuntu
+  gem:
+    name: rails
+    user_install: no
+    executable: "{{ rbenv_install_dir }}/shims/gem"
+
+- name: Install bundler
+  become: yes
+  become_user: ubuntu
+  gem:
+    name: bundler
+    user_install: no
+    executable: "{{ rbenv_install_dir }}/shims/gem"

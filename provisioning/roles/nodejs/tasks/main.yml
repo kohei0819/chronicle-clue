@@ -1,0 +1,28 @@
+---
+- name: aptにNodeSourceの鍵情報を追加
+  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+
+- name: aptにパッケージのダウンロード元を追加
+  copy:
+    content: |
+      deb https://deb.nodesource.com/node_6.x xenial main
+      deb-src https://deb.nodesource.com/node_6.x xenial main
+    dest: /etc/apt/sources.list.d/nodesource.list
+  register: sources_list
+
+- name: aptのアップデート
+  apt: update_cache=yes
+  when: sources_list is changed
+
+- name: aptにYarnのリポジトリを追加
+  apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+    filename: yarn
+
+- name: パッケージのインストール
+  apt:
+    force: yes
+    name:
+      - nodejs
+      - yarn
+      - build-essential

@@ -1,0 +1,4 @@
+---
+php_error_reporting: E_ALL
+php_display_errors: yes
+php_display_startup_errors: yes
