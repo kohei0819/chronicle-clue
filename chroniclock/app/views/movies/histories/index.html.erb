@@ -1,0 +1,35 @@
+<% content_for :title do %>映画一覧<% end %>
+
+<div class="row">
+
+  <div class="large-3 medium-4 columns hide-for-small-only height-max">
+    <div class="show-for-medium-only">
+      <%= render 'layouts/profile' %>
+      <%= render 'layouts/tags' %>
+    </div>
+    <div>
+      <%= render 'layouts/ad' %>
+    </div>
+  </div>
+
+  <div class="large-6 medium-8 columns feed-list">
+    <% if user_signed_in? %>
+      <div><%= link_to 'Done', new_movie_history_path(@movie.id) %></div>
+    <% end %>
+    <% if @movies_histories.empty? %>
+      0件
+    <% else %>
+      <% @movies_histories.each do |history| %>
+        <%= render 'list_line', history: history %>
+        <hr>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="large-3 columns show-for-large">
+    <div>
+      <%= render 'layouts/tags' %>
+    </div>
+  </div>
+
+</div>

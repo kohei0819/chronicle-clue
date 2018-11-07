@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="large-6 columns">
+
+    <h5><%= @movie.name_jp %></h5>
+
+    <%= render 'form' %>
+
+    <%= link_to 'Show', movie_history_path(
+      :movie_id => @movies_history.movie_id, :id => @movies_history.id) %> |
+
+    <%= link_to 'Back', movie_path(:id => @movie.id) %>
+
+  </div>
+</div>

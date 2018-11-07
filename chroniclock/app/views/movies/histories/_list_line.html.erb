@@ -1,0 +1,14 @@
+<div class="row">
+    <div><%= history.comment %></div>
+    <div><%= history.score %></div>
+    <div>
+      <span><%= Common::locations[history.view_place] %></span> /
+      <span><%= Common::people[history.view_with] %></span>
+    </div>
+    <% if current_user.id == history.user_id %>
+      <div>
+        <%= link_to 'Edit', edit_movie_history_path(
+          :id => history.id, :movie_id => history.movie_id) %>
+      </div>
+    <% end %>
+</div>

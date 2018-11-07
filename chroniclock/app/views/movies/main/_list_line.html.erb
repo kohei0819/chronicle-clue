@@ -1,0 +1,19 @@
+<div class="fade-in<%= '-' << @page if !@page.blank? %> row">
+  <% if movie.image? %>
+    <div class="large-2 columns small-3">
+      <%= image_tag "/uploads/movie/image/#{movie.movie_id}/#{movie.image}", :size => "80x80" %>
+    </div>
+  <% else %>
+    <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&amp;text=[img]"></div>
+  <% end %>
+  <div class="large-10 columns">
+    <div class="list-title"><%= link_to movie.name_jp, movie_path(movie.movie_id) %></div>
+    <div class="list-introduction"><%= movie.introduction %></div>
+    <ul class="menu">
+      <li><%= link_to 'Reviews', movie_histories_path(movie.movie_id) %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Done', new_movie_history_path(movie.movie_id), :class => 'modal' %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

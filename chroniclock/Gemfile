@@ -35,6 +35,23 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# divise
+gem 'devise'
+# active_admin
+gem 'activeadmin'
+# omniauth
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+# materialize-css
+gem 'materialize-sass'
+# file uploader
+gem 'carrierwave'
+gem 'mini_magick'
+# wikipedia api
+gem 'wikipedia-client'
+# seed_dump
+gem 'seed_dump'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

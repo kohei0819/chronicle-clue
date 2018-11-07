@@ -1,0 +1,8 @@
+<% @movies.each do |movie| %>
+  <%= render 'movies/main/list_line', movie: movie %>
+  <hr>
+<% end %>
+
+<div class="spinner">
+  <%= render 'movies/main/spinner' %>
+</div>

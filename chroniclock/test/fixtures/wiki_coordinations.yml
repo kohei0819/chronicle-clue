@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pageid: MyString
+  title: MyString
+  kind: MyString
+  match_rank: MyString
+
+two:
+  pageid: MyString
+  title: MyString
+  kind: MyString
+  match_rank: MyString

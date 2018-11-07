@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="large-6 columns">
+
+    <p id="notice"><%= notice %></p>
+
+    <h5><%= @movie.name_jp %></h5>
+
+    <div>
+      <% for num in 1..10 do %>
+        <% if num <= @movies_history.score %>
+          ★
+        <% else %>
+          ☆
+        <% end %>
+      <% end %>
+    </div>
+    <div>鑑賞日：<%= @movies_history.view_date %></div>
+    <div><%= @movies_history.view_place %></div>
+    <div><%= @movies_history.view_with %></div>
+    <div><%= @movies_history.comment %></div>
+
+    <div>
+      <%= link_to 'Edit', edit_movie_history_path(
+        :id => @movies_history.id, :movie_id => @movies_history.movie_id) %>
+    </div>
+    <div>
+      <%= link_to 'Delete', movie_history_path(:id => @movies_history.id),
+        :method => :delete, data: { confirm: '削除すると元にはもどせません。削除しますか？' } %>
+    </div>
+    <div><%= link_to 'Back', movie_histories_path %></div>
+
+  </div>
+</div>

@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  element: one
+  story: MyText
+  original: MyString
+  url: MyString
+  image: MyString
+  movie: MyString
+  country: one
+  language: one
+  opendate: 2018-11-07
+  time: 1
+  production: MyString
+  distributed: MyString
+  budget: MyString
+  box_office: MyString
+  wiki_coordination: one
+
+two:
+  element: two
+  story: MyText
+  original: MyString
+  url: MyString
+  image: MyString
+  movie: MyString
+  country: two
+  language: two
+  opendate: 2018-11-07
+  time: 1
+  production: MyString
+  distributed: MyString
+  budget: MyString
+  box_office: MyString
+  wiki_coordination: two
