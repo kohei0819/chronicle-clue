@@ -17,9 +17,6 @@ module Chroniclock
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
     config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js]
 
     config.autoload_paths += Dir["#{config.root}/lib"]

@@ -1,6 +1,14 @@
-i .btn {
-  color: white;
-  background-color: blue;
+i.btn {
+  background-color: #2196f3;
+
+  input[type="submit"] {
+    color: white;
+    padding: 0 0 1.5px 1.5px;
+  }
+
+  &:hover {
+    background-color: #64b5f6;
+  }
 }
 
 @for $i from 0 through 20 {
