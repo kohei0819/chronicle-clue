@@ -1,0 +1,9 @@
+---
+- name: install devise
+  shell: |
+    "{{ rbenv_install_dir}}/shims/rails generate devise:install"
+    "{{ rbenv_install_dir}}/shims/rails generate devise {{ devise_model }}"
+    "{{ rbenv_install_dir}}/shims/rails db:migrate"
+    "{{ rbenv_install_dir}}/shims/rails generate devise:views {{ devise_view_dir }}"
+  args:
+    chdir: /vagrant

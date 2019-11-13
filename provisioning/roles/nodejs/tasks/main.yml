@@ -5,8 +5,8 @@
 - name: aptにパッケージのダウンロード元を追加
   copy:
     content: |
-      deb https://deb.nodesource.com/node_6.x xenial main
-      deb-src https://deb.nodesource.com/node_6.x xenial main
+      deb https://deb.nodesource.com/node_13.x xenial main
+      deb-src https://deb.nodesource.com/node_13.x xenial main
     dest: /etc/apt/sources.list.d/nodesource.list
   register: sources_list
 

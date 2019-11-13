@@ -1,6 +1,6 @@
 - name: git clone rbenv
   become: yes
-  become_user: ubuntu
+  become_user: vagrant
   git:
     repo: https://github.com/sstephenson/rbenv.git
     dest: "{{ rbenv_install_dir }}"
@@ -8,7 +8,7 @@
 
 - name: git clone ruby-build
   become: yes
-  become_user: ubuntu
+  become_user: vagrant
   git:
     repo: https://github.com/sstephenson/ruby-build.git
     dest: "{{ ruby_build_install_dir }}"
@@ -16,7 +16,7 @@
 
 - name: check rbenv is installed
   become: yes
-  become_user: ubuntu
+  become_user: vagrant
   shell: bash -lc "rbenv --version"
   register: rbenv_is_installed
   changed_when: no
@@ -24,14 +24,14 @@
 
 - name: install ruby-build
   become: yes
-  become_user: ubuntu
+  become_user: vagrant
   shell: >
     cd {{ ruby_build_install_dir }}
     ./install.sh
 
 - name: add rbenv to path
   become: yes
-  become_user: ubuntu
+  become_user: vagrant
   lineinfile: >
     dest="{{ rbenv_install_user_dir }}/.profile"
     line="export PATH=$HOME/.rbenv/bin:$PATH"
@@ -39,7 +39,7 @@
 
 - name: add eval "$(rbenv init -)"
   become: yes
-  become_user: ubuntu
+  become_user: vagrant
   lineinfile: >
     dest="{{ rbenv_install_user_dir }}/.profile"
     line='eval "$(rbenv init -)"'
@@ -47,6 +47,6 @@
 
 - name: reload .profile
   become: yes
-  become_user: ubuntu
+  become_user: vagrant
   shell: . ~/.profile
   when: rbenv_is_installed is failed

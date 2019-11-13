@@ -1,6 +1,6 @@
 - name: Install rails
   become: yes
-  become_user: ubuntu
+  become_user: vagrant
   gem:
     name: rails
     user_install: no
@@ -8,7 +8,7 @@
 
 - name: Install bundler
   become: yes
-  become_user: ubuntu
+  become_user: vagrant
   gem:
     name: bundler
     user_install: no
