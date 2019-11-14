@@ -1,8 +1,8 @@
 ---
-- name: データベースの作成
+- name: Create database
   mysql_db: name={{ db_name }}
 
-- name: データベースユーザの作成
+- name: Create database user
   mysql_user:
     host: "{{ db_host }}"
     name: "{{ db_user }}"
@@ -10,20 +10,27 @@
     priv: "{{ db_name }}.*:ALL"
 
 - name: Install mysql2
-  become: yes
-  become_user: ubuntu
   gem:
     name: mysql2
     executable: "{{ rbenv_install_dir }}/shims/gem"
 
-- name: プロジェクトの作成
+- name: Execute yarn install
+  shell: /usr/bin/yarn install
+  args:
+    chdir: /vagrant/{{ project_name }}
+
+- name: Create project
   shell: "{{ rbenv_install_dir}}/shims/rails new {{ project_name }} -d mysql --webpack=vue"
   args:
     chdir: /vagrant
 
-- name: bundle install
-  become: yes
-  become_user: ubuntu
+- name: Edit Gemfile
+  template:
+    dest: /vagrant/{{ project_name }}/Gemfile
+    mode: 0644
+    src: Gemfile.j2
+
+- name: Execute bundle install
   shell: "{{ rbenv_install_dir}}/shims/bundle install"
   args:
     chdir: /vagrant/{{ project_name }}
@@ -37,3 +44,13 @@
     path: /vagrant/{{ project_name }}/config/database.yml
     regexp: '^\s\spassword\:$'
     line: '  password: {{ db_password }}'
+
+- name: Execute gemerate
+  shell: |
+    {{ rbenv_install_dir}}/shims/rails webpacker:install
+    {{ rbenv_install_dir}}/shims/rails webpacker:install:vue
+    {{ rbenv_install_dir}}/shims/rails generate devise:install
+    {{ rbenv_install_dir}}/shims/rails generate devise user
+    {{ rbenv_install_dir}}/shims/rails generate devise:views users
+  args:
+    chdir: /vagrant/{{ project_name }}

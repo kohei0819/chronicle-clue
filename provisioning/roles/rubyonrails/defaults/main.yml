@@ -1,4 +1,0 @@
----
-rbenv_install_dir: /home/vagrant/.rbenv
-devise_model: user
-devise_view_dir: users
