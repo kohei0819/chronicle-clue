@@ -1,26 +1,6 @@
 ---
-- name: Create database
-  mysql_db: name={{ db_name }}
-
-- name: Create database user
-  mysql_user:
-    host: "{{ db_host }}"
-    name: "{{ db_user }}"
-    password: "{{ db_password }}"
-    priv: "{{ db_name }}.*:ALL"
-
-- name: Install mysql2
-  gem:
-    name: mysql2
-    executable: "{{ rbenv_install_dir }}/shims/gem"
-
-- name: Execute yarn install
-  shell: /usr/bin/yarn install
-  args:
-    chdir: /vagrant/{{ project_name }}
-
 - name: Create project
-  shell: "{{ rbenv_install_dir}}/shims/rails new {{ project_name }} -d mysql --webpack=vue"
+  shell: "{{ rbenv_install_dir}}/shims/rails new {{ project_name }} -d postgresql --webpack=vue"
   args:
     chdir: /vagrant
 
@@ -30,27 +10,35 @@
     mode: 0644
     src: Gemfile.j2
 
+- name: Edit database.yml
+  replace:
+    path: /vagrant/{{ project_name }}/config/database.yml
+    regexp: 'encoding\:\sunicode$'
+    replace: "encoding: unicode\n  username: {{ db_user }}\n  password: {{ db_password }}"
+
+- name: Execute yarn install
+  shell: /usr/bin/yarn install --check-files
+  args:
+    chdir: /vagrant/{{ project_name }}
+
 - name: Execute bundle install
   shell: "{{ rbenv_install_dir}}/shims/bundle install"
   args:
     chdir: /vagrant/{{ project_name }}
 
-- lineinfile:
-    path: /vagrant/{{ project_name }}/config/database.yml
-    regexp: '^\s\susername\: root$'
-    line: '  username: {{ db_user }}'
+- name: Restart PostgeSQL
+  service:
+    name: postgresql
+    state: restarted
 
-- lineinfile:
-    path: /vagrant/{{ project_name }}/config/database.yml
-    regexp: '^\s\spassword\:$'
-    line: '  password: {{ db_password }}'
+- name: Execute database rollback
+  become: yes
+  shell: "{{ rbenv_install_dir}}/shims/rails db:rollback"
+  args:
+    chdir: /vagrant/{{ project_name }}
 
-- name: Execute gemerate
-  shell: |
-    {{ rbenv_install_dir}}/shims/rails webpacker:install
-    {{ rbenv_install_dir}}/shims/rails webpacker:install:vue
-    {{ rbenv_install_dir}}/shims/rails generate devise:install
-    {{ rbenv_install_dir}}/shims/rails generate devise user
-    {{ rbenv_install_dir}}/shims/rails generate devise:views users
+- name: Execute database migrate
+  become: yes
+  shell: "{{ rbenv_install_dir}}/shims/rails db:migrate"
   args:
     chdir: /vagrant/{{ project_name }}

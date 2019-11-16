@@ -1,0 +1,31 @@
+---
+- name: Install packagese
+  apt:
+    name:
+      - postgresql
+      - python-psycopg2
+
+- name: Edit environment
+  become: yes
+  template:
+    dest: /etc
+    mode: 0644
+    src: environment.j2
+
+- name: Edit configuration file
+  template:
+    dest: "/etc/postgresql/9.5/main/{{ item }}"
+    group: postgres
+    mode: 0640
+    owner: postgres
+    src: "{{ item }}.j2"
+  with_items:
+    - postgresql.conf
+    - pg_hba.conf
+  notify: Restart PostgreSQL
+
+- name: Launch and enable
+  service:
+    enabled: yes
+    name: postgresql
+    state: started

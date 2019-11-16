@@ -3,11 +3,3 @@ rails_version: 6.0.1
 rbenv_install_dir: /home/vagrant/.rbenv
 ruby_build_install_dir: /home/vagrant/.rbenv/plugins/ruby-build
 rbenv_install_user_dir: /home/vagrant
-document_root: /home/vagrant/rails6-api-prototype/public
-domain_name: dev.rails6-api.net
-mysql_root_password: Rails@RootPassword999@
-mysql_user_password: Rails@RootPassword999@
-mysql_db_name: rails6_api
-mysql_test_db_name: rails6_api_test
-mysql_db_user: rails6_api_user
-mysql_test_db_user: rails6_api_test_user

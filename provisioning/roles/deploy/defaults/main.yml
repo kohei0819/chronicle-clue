@@ -1,7 +1,7 @@
 ---
 project_name: chroniclue
 db_name: chroniclue_development
-db_user: chroniclue_dev_user
+db_user: chroniclue
 db_password: password
 db_host: localhost
 deploy_env_vars: {}
