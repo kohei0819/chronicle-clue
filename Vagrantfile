@@ -16,6 +16,7 @@ Vagrant.configure('2') do |config|
   config.disksize.size = '5GB'
 
   config.vm.network 'forwarded_port', guest: 3000, host: 3000
+  config.vm.network 'forwarded_port', guest: 5000, host: 5000
   config.vm.network 'private_network', ip: $private_network_ip
   config.vm.network 'public_network' if $public_network_enabled
 

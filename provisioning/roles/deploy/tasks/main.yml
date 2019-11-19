@@ -1,6 +1,6 @@
 ---
 - name: Create project
-  shell: "{{ rbenv_install_dir}}/shims/rails new {{ project_name }} -d postgresql --webpack=vue"
+  shell: "{{ rbenv_install_dir}}/shims/rails new {{ project_name }} -d postgresql --webpack=react"
   args:
     chdir: /vagrant
 
@@ -42,3 +42,13 @@
   shell: "{{ rbenv_install_dir}}/shims/rails db:migrate"
   args:
     chdir: /vagrant/{{ project_name }}
+
+- name: Edit configuration files
+  template:
+    dest: "/vagrant/{{ project_name }}/{{ item }}"
+    mode: 0777
+    src: "{{ item }}.j2"
+  with_items:
+    - Procfile
+    - Procfile.dev
+    - bin/server

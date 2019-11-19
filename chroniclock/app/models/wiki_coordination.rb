@@ -1,2 +1,0 @@
-class WikiCoordination < ApplicationRecord
-end

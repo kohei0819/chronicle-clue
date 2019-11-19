@@ -78,5 +78,6 @@ yarn-debug.log*
 
 ### Vagrant Patch ###
 *.box
+vagrantconfig.local.rb
 
 # End of https://www.gitignore.io/api/rails,vagrant,ansible
