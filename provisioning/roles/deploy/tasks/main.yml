@@ -1,9 +1,4 @@
 ---
-- name: Create project
-  shell: "{{ rbenv_install_dir}}/shims/rails new {{ project_name }} -d postgresql --webpack=react"
-  args:
-    chdir: /vagrant
-
 - name: Edit Gemfile
   template:
     dest: /vagrant/{{ project_name }}/Gemfile
