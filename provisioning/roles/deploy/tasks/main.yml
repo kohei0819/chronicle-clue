@@ -1,25 +1,25 @@
 ---
 - name: Edit Gemfile
   template:
-    dest: /vagrant/{{ project_name }}/Gemfile
+    dest: /vagrant/Gemfile
     mode: 0644
     src: Gemfile.j2
 
 - name: Edit database.yml
   replace:
-    path: /vagrant/{{ project_name }}/config/database.yml
+    path: /vagrant/config/database.yml
     regexp: 'encoding\:\sunicode$'
     replace: "encoding: unicode\n  username: {{ db_user }}\n  password: {{ db_password }}"
 
 - name: Execute yarn install
   shell: /usr/bin/yarn install --check-files
   args:
-    chdir: /vagrant/{{ project_name }}
+    chdir: /vagrant
 
 - name: Execute bundle install
   shell: "{{ rbenv_install_dir}}/shims/bundle install"
   args:
-    chdir: /vagrant/{{ project_name }}
+    chdir: /vagrant
 
 - name: Restart PostgeSQL
   service:
@@ -30,17 +30,17 @@
   become: yes
   shell: "{{ rbenv_install_dir}}/shims/rails db:rollback"
   args:
-    chdir: /vagrant/{{ project_name }}
+    chdir: /vagrant
 
 - name: Execute database migrate
   become: yes
   shell: "{{ rbenv_install_dir}}/shims/rails db:migrate"
   args:
-    chdir: /vagrant/{{ project_name }}
+    chdir: /vagrant
 
 - name: Edit configuration files
   template:
-    dest: "/vagrant/{{ project_name }}/{{ item }}"
+    dest: "/vagrant/{{ item }}"
     mode: 0777
     src: "{{ item }}.j2"
   with_items:
