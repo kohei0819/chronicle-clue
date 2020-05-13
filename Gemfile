@@ -30,6 +30,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # add 
 gem 'devise'
+gem 'activeadmin'
+gem 'cancancan'
+
+gem 'materialize-sass', '~> 1.0.0'
+gem 'material_icons'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

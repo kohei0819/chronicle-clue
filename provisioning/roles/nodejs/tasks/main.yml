@@ -11,13 +11,17 @@
   register: sources_list
 
 - name: Update apt
-  apt: update_cache=yes
+  apt: 
+    update_cache: yes
   when: sources_list is changed
 
 - name: Add Yarn repository to apt
-  apt_repository:
-    repo: deb https://dl.yarnpkg.com/debian/ stable main
-    filename: yarn
+  become: yes
+  become_user: root
+  shell: |
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    apt update
 
 - name: Install packages
   apt:
