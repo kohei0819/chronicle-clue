@@ -1,5 +1,0 @@
----
-- name: Change .profile to move to working directory at login
-  lineinfile:
-    dest: /home/vagrant/.profile
-    line: 'cd "{{ vagrant_initial_dir }}"'
