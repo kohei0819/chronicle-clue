@@ -60,17 +60,3 @@ Docker を用いて Rails 6 アプリケーションの開発・学習を始め�
 ```
 % docker-compose down
 ```
-
-## 初期操作
-
-```
-$ bin/bundle
-$ yarn
-$ bin/rails db:create
-```
-
-## railsサーバーの起動
-
-```
-$ bin/rails s -b 0.0.0,0
-```

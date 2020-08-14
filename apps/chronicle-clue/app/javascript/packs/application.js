@@ -15,3 +15,14 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import '../stylesheets/application'
+import 'materialize-css/dist/js/materialize'
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.collapsible');
+  var instances = M.Collapsible.init(elems, []);
+
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, []);
+});

@@ -1,0 +1,7 @@
+@import 'materialize-css/sass/components/_color-variables';
+$primary-color: color("blue", "darken-2") !default;
+@import 'materialize-css/sass/materialize';
+
+nav a.sidenav-trigger {
+  display: block;
+}
