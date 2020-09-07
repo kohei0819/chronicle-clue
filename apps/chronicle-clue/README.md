@@ -34,3 +34,9 @@ $ bin/rails db:seed
 ```
 $ bin/rails s -b 0.0.0.0
 ```
+
+## dbサーバーへの接続
+$ psql -U postgres -h db
+
+## active_adminへの対象追加
+$ rails generate active_admin:resource 対象
