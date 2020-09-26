@@ -1,0 +1,48 @@
+Country.delete_all
+
+[
+  [1, 'Japan', '日本', 1],
+  [2, 'United States', 'アメリカ', 2],
+  [3, 'United Kingdom', 'イギリス', 3],
+  [4, 'France', 'フランス', 4],
+  [5, 'Deutschland', 'ドイツ', 5],
+  [6, 'Italia', 'イタリア', 6],
+  [7, 'Spain', 'スペイン', 7],
+  [8, 'China', '中国', 8],
+  [9, 'Korea', '韓国', 9],
+  [10, 'Australia', 'オーストラリア', 10],
+  [11, 'Canada', 'カナダ', 11],
+  [12, 'Russia', 'ロシア', 12],
+  [13, 'Mexico', 'メキシコ', 13],
+  [14, 'Brasil', 'ブラジル', 14],
+  [15, 'Belgium', 'ベルギー', 15],
+  [16, 'India', 'インド', 16],
+  [17, 'Poland', 'ポーランド', 17],
+  [18, 'Portugal', 'ポルトガル', 18],
+  [19, 'Turkey', 'トルコ', 19],
+  [20, 'Czech', 'チェコ', 20],
+  [21, 'Switzerland', 'スイス', 21],
+  [22, 'Sweden', 'スウェーデン', 22],
+  [23, 'Norway', 'ノルウェー', 23],
+  [24, 'Denmark', 'デンマーク', 24],
+  [25, 'Netherlands', 'オランダ', 25],
+  [26, 'Argentina', 'アルゼンチン', 26],
+  [27, 'South Africa', '南アフリカ', 27],
+  [28, 'Egypt', 'エジプト', 28],
+  [29, 'Greece', 'ギリシャ', 29],
+  [30, 'Columbia', 'コロンビア', 30],
+  [31, 'Jamaica', 'ジャマイカ', 31],
+  [32, 'Singapore', 'シンガポール', 32],
+  [33, 'Indonesia', 'インドネシア', 33],
+  [34, 'Austria', 'オーストリア', 34],
+  [35, 'Thailand', 'タイ', 35],
+  [36, 'New Zealand', 'ニュージーランド', 36],
+  [37, 'Hungary', 'ハンガリー', 37],
+  [38, 'Philippines', 'フィリピン', 38],
+  [39, 'Malaysia', 'マレーシア', 39],
+  [40, 'Morocco', 'モロッコ', 40],
+].each do |id, name, name_jpn, sort|
+  Country.create!(
+    { id: id, name: name, name_jpn: name_jpn, sort: sort }
+  )
+end

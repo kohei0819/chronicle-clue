@@ -26,8 +26,22 @@ $ bin/rails g devise:install
 $ bin/rails g devise:views
 $ bin/rails g devise user
 $ bin/rails g active_admin:install
+```
+
+## DBのテーブル作成
+```
 $ bin/rails db:migrate
 $ bin/rails db:seed
+```
+
+## DBのテーブル再作成
+```
+$ bin/rails db:migrate:reset
+```
+
+## seed指定実行
+```
+$ bin/rails r db/seeds/対象.rb
 ```
 
 ## railsサーバーの起動

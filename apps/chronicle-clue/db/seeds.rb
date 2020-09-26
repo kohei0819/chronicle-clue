@@ -8,3 +8,7 @@
 
 require './db/seeds/admin_user.rb'
 require './db/seeds/medium.rb'
+require './db/seeds/category.rb'
+require './db/seeds/country.rb'
+require './db/seeds/language.rb'
+require './db/seeds/role.rb'
