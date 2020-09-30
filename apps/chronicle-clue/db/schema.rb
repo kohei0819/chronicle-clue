@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_120308) do
+ActiveRecord::Schema.define(version: 2020_09_30_184332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,12 +51,39 @@ ActiveRecord::Schema.define(version: 2020_08_18_120308) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "content_categories", force: :cascade do |t|
+    t.bigint "content_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_content_categories_on_category_id"
+    t.index ["content_id"], name: "index_content_categories_on_content_id"
+  end
+
+  create_table "content_countries", force: :cascade do |t|
+    t.bigint "content_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_content_countries_on_content_id"
+    t.index ["country_id"], name: "index_content_countries_on_country_id"
+  end
+
   create_table "content_images", force: :cascade do |t|
     t.bigint "content_id", null: false
     t.string "path"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["content_id"], name: "index_content_images_on_content_id"
+  end
+
+  create_table "content_languages", force: :cascade do |t|
+    t.bigint "content_id", null: false
+    t.bigint "language_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_content_languages_on_content_id"
+    t.index ["language_id"], name: "index_content_languages_on_language_id"
   end
 
   create_table "content_movies", force: :cascade do |t|
@@ -163,7 +190,13 @@ ActiveRecord::Schema.define(version: 2020_08_18_120308) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "content_categories", "categories"
+  add_foreign_key "content_categories", "contents"
+  add_foreign_key "content_countries", "contents"
+  add_foreign_key "content_countries", "countries"
   add_foreign_key "content_images", "contents"
+  add_foreign_key "content_languages", "contents"
+  add_foreign_key "content_languages", "languages"
   add_foreign_key "content_movies", "contents"
   add_foreign_key "contents", "media", column: "media_id"
   add_foreign_key "films", "contents"

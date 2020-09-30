@@ -334,8 +334,8 @@ ActiveAdmin.setup do |config|
   # config.use_webpacker = true
 
   config.clear_stylesheets!
-  config.register_stylesheet 'active_admin.css'
+  config.register_stylesheet "active_admin.css"
 
   config.clear_javascripts!
-  config.register_javascript 'active_admin.js'
+  config.register_javascript "active_admin.js"
 end

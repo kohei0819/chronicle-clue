@@ -41,7 +41,7 @@ $ bin/rails db:migrate:reset
 
 ## seed指定実行
 ```
-$ bin/rails r db/seeds/対象.rb
+$ bin/rails r db/seeds/対象ファイル
 ```
 
 ## railsサーバーの起動
