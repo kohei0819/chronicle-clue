@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_184332) do
   end
 
   create_table "contents", force: :cascade do |t|
-    t.bigint "media_id", null: false
+    t.bigint "medium_id", null: false
     t.string "name"
     t.string "name_jpn"
     t.string "name_kana"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_184332) do
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["media_id"], name: "index_contents_on_media_id"
+    t.index ["medium_id"], name: "index_contents_on_medium_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -198,7 +198,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_184332) do
   add_foreign_key "content_languages", "contents"
   add_foreign_key "content_languages", "languages"
   add_foreign_key "content_movies", "contents"
-  add_foreign_key "contents", "media", column: "media_id"
+  add_foreign_key "contents", "media"
   add_foreign_key "films", "contents"
   add_foreign_key "people", "contents"
   add_foreign_key "user_details", "users"

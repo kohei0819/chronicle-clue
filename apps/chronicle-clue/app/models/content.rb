@@ -1,6 +1,5 @@
 class Content < ApplicationRecord
-  belongs_to :media
-  has_one :film
+  belongs_to :medium
   has_many :content_countries, dependent: :destroy
   has_many :country, through: :content_countries
   has_many :content_languages, dependent: :destroy
