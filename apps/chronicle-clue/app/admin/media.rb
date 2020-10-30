@@ -5,7 +5,7 @@ ActiveAdmin.register Medium do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :name_jpn, :mark, :sort
+  permit_params :name, :name_jpn, :mark, :sort
   #
   # or
   #

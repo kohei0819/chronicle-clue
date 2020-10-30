@@ -5,7 +5,7 @@ ActiveAdmin.register Language do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :name_jpn, :sort
+  permit_params :name, :name_jpn, :sort
   #
   # or
   #

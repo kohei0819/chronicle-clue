@@ -5,7 +5,7 @@ ActiveAdmin.register Film do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :content_id, :outline, :story, :original, :website, :opendate, :running_time, :productino, :distributed, :budget, :box_office
+  permit_params :content_id, :outline, :story, :original, :website, :opendate, :running_time, :productino, :distributed, :budget, :box_office
   #
   # or
   #
