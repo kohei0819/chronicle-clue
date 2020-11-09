@@ -5,7 +5,7 @@ ActiveAdmin.register Content do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :medium, :name, :name_jpn, :name_kana, :introduction, :status
+  permit_params :medium_id, :name, :name_jpn, :name_kana, :introduction, :status
   #
   # or
   #
