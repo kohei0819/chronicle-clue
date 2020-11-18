@@ -1,0 +1,457 @@
+/* Custom Stylesheet */
+
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+body {
+  background-color: #fff;
+  color: #818181;
+  font-family: 'Noto Sans JP';
+  font-weight: 300;
+}
+
+nav {
+  background-color: #fff;
+
+  a {
+    color: #616161;
+  }
+}
+
+nav ul a,
+nav .brand-logo {
+  color: #87b79a;
+}
+
+p {
+  line-height: 2rem;
+}
+
+#app {
+  min-height: 40em;
+}
+
+.clear {
+  clear: both;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 1px #666;
+}
+
+.secound-backcolor {
+  background-color: #efefe1;
+}
+
+.datepicker-controls {
+  .select-month,
+  .select-year {
+    input {
+      width: 100%;
+    }
+  }
+
+  .select-wrapper {
+    .caret {
+      display: block;
+    }
+  }
+}
+
+.button-collapse {
+  color: #87b79a;
+
+  i {
+    color: #818181;
+  }
+}
+
+.collection-item {
+  p {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: inherit;
+    margin: 0;
+  }
+}
+
+.parallax-container {
+  min-height: 460px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.parallax-container .section {
+  width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.text-small {
+  font-size: 12px;
+}
+
+.text-smallest {
+  font-size: 9px;
+}
+
+.parallax-container .select-dropdown {
+  opacity: 0.5;
+}
+
+.banner {
+  position: relative;
+  height: 40px;
+}
+
+@for $i from 0 through 20 {
+  .mg#{$i * 5} {
+    margin: #{$i * 5}px;
+  }
+
+  .mt#{$i * 5} {
+    margin-top: #{$i * 5}px;
+  }
+
+  .mb#{$i * 5} {
+    margin-bottom: #{$i * 5}px;
+  }
+
+  .ml#{$i * 5} {
+    margin-left: #{$i * 5}px;
+  }
+
+  .mr#{$i * 5} {
+    margin-right: #{$i * 5}px;
+  }
+
+  .pd#{$i * 5} {
+    padding: #{$i * 5}px;
+  }
+
+  .pt#{$i * 5} {
+    padding-top: #{$i * 5}px;
+  }
+
+  .pb#{$i * 5} {
+    padding-bottom: #{$i * 5}px;
+  }
+
+  .pl#{$i * 5} {
+    padding-left: #{$i * 5}px;
+  }
+
+  .pr#{$i * 5} {
+    padding-right: #{$i * 5}px;
+  }
+
+  .mg-#{$i * 5} {
+    margin: -#{$i * 5}px;
+  }
+
+  .mt-#{$i * 5} {
+    margin-top: -#{$i * 5}px;
+  }
+
+  .mb-#{$i * 5} {
+    margin-bottom: -#{$i * 5}px;
+  }
+
+  .ml-#{$i * 5} {
+    margin-left: -#{$i * 5}px;
+  }
+
+  .mr-#{$i * 5} {
+    margin-right: -#{$i * 5}px;
+  }
+
+  .pd-#{$i * 5} {
+    padding: -#{$i * 5}px;
+  }
+
+  .pt-#{$i * 5} {
+    padding-top: -#{$i * 5}px;
+  }
+
+  .pb-#{$i * 5} {
+    padding-bottom: -#{$i * 5}px;
+  }
+
+  .pl-#{$i * 5} {
+    padding-left: -#{$i * 5}px;
+  }
+
+  .pr-#{$i * 5} {
+    padding-right: -#{$i * 5}px;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.alert-text {
+}
+
+.input-field {
+  input[type=text],
+  input[type=email],
+  input[type=password],
+  input[type=number],
+  textarea {
+    border-bottom: 1px solid #9e9e9e;
+    box-shadow: 0 1px 0 0 #9e9e9e;
+  }
+}
+
+.outing-card,
+.commission-card {
+  .card-image {
+    a {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+
+      &:hover {
+        background-color: rgba(#fff, 0.3);
+      }
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    height: 60% !important;
+  }
+
+  .card-content {
+    padding-top: 20px;
+    padding-left: 5px;
+    height: 20% !important;
+  }
+
+  .card-action {
+    padding-top: 7px;
+    padding-left: 5px;
+    height: 20% !important;
+    margin: 0;
+  }
+
+  .price {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 8px;
+  }
+}
+
+.collection {
+  .avatar-mine {
+    min-height: 84px;
+    padding-left: 72px;
+    padding-right: 72px;
+    position: relative;
+
+    .circle {
+      position: absolute;
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      right: 15px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+nav a.sidenav-trigger {
+  display: block;
+  margin-left: 0;
+}
+
+.navbar-profile-img {
+  position: relative;
+}
+
+.sidenav {
+  li {
+    border: 0;
+  }
+
+  .user-view {
+    margin-bottom: 0;
+  }
+
+  img.circle {
+    border: solid 2px #bbb;
+  }
+}
+
+.outing-table,
+.commission-table,
+.myouting-table,
+.mycommission-table,
+.myerrand-table,
+.profile-table {
+  tbody {
+    th {
+      width: 30%;
+      white-space: nowrap;
+    }
+
+    td {
+      width: 70%;
+    }
+  }
+}
+
+// doiuse-disable
+.sepia {
+  filter: sepia(30%);
+}
+
+.blur {
+  filter: blur(1.5px);
+}
+
+.blur-high {
+  filter: blur(4px);
+}
+
+.saturate {
+  filter: saturate(80%);
+}
+
+.saturate-high {
+  filter: saturate(150%);
+}
+
+.darker {
+  filter: brightness(75%);
+}
+// doiuse-disable
+
+.unread {
+  font-weight: bold;
+}
+
+// social design
+.btn,
+.btn-large,
+.col {
+  &.social {
+    > :first-child {
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &.social {
+    padding: 0 2rem 0 0;
+
+    i {
+      padding: 0 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  &.social-icon {
+    padding: 0;
+
+    i {
+      padding: 0 1rem;
+      margin-right: 0;
+    }
+  }
+}
+
+.btn-large {
+  &.social-icon {
+    padding: 0 1rem;
+  }
+}
+
+.col {
+  &.social {
+    width: 100%;
+    text-align: left;
+
+    i.fa-fw {
+      width: 3.2rem;
+    }
+  }
+}
+
+@mixin social($color-bg, $color: #fff) {
+  background-color: $color-bg !important;
+  color: $color !important;
+
+  i {
+    color: $color !important;
+  }
+
+  &:hover {
+    background-color: lighten($color-bg, 10%) !important;
+  }
+}
+
+.adn { @include social(#d87a68); }
+.bitbucket { @include social(#205081); }
+.dropbox { @include social(#1087dd); }
+.facebook { @include social(#3b5998); }
+.flickr { @include social(#ff0084); }
+.foursquare { @include social(#f94877); }
+.github { @include social(#444444); }
+.google { @include social(#dd4b39); }
+.instagram { @include social(#405de6); }
+.linkedin { @include social(#007bb6); }
+.microsoft { @include social(#2672ec); }
+.windows { @include social(#2672ec); }
+.odnoklassniki { @include social(#f4731c); }
+.openid { @include social(#f7931e); }
+.pinterest { @include social(#cb2027); }
+.reddit { @include social(#eff7ff, #000); }
+.soundcloud { @include social(#ff5500); }
+.tumblr { @include social(#2c4762); }
+.twitter { @include social(#55acee); }
+.vimeo { @include social(#1ab7ea); }
+.vk { @include social(#587ea3); }
+.yahoo { @include social(#720e9e); }

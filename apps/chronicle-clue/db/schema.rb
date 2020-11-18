@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_184332) do
+ActiveRecord::Schema.define(version: 2020_11_17_083015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_184332) do
   end
 
   create_table "contents", force: :cascade do |t|
-    t.bigint "medium_id", null: false
+    t.bigint "media_id", null: false
     t.string "name"
     t.string "name_jpn"
     t.string "name_kana"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_184332) do
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["medium_id"], name: "index_contents_on_medium_id"
+    t.index ["media_id"], name: "index_contents_on_media_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -186,6 +186,9 @@ ActiveRecord::Schema.define(version: 2020_09_30_184332) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -198,7 +201,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_184332) do
   add_foreign_key "content_languages", "contents"
   add_foreign_key "content_languages", "languages"
   add_foreign_key "content_movies", "contents"
-  add_foreign_key "contents", "media"
+  add_foreign_key "contents", "media", column: "media_id"
   add_foreign_key "films", "contents"
   add_foreign_key "people", "contents"
   add_foreign_key "user_details", "users"

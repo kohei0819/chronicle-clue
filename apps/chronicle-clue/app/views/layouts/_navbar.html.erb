@@ -4,9 +4,13 @@
       <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Chronicle-Clue</a>
       <a href="#" data-target="slide-out" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
-        <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-        <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Log in', new_user_session_path %></li>
+        <% end %>
       </ul>
     </div>
   </nav>
