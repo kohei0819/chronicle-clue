@@ -11,11 +11,16 @@
   </head>
 
   <body>
-    <%= render :partial => "layouts/navbar" %>
 
-    <%= render :partial => "layouts/sidenavi" %>
+    <header>
+      <%= render :partial => "layouts/navbar" %>
 
-    <%= yield %>
+      <%= render :partial => "layouts/sidenavi" %>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
 
   </body>
 </html>

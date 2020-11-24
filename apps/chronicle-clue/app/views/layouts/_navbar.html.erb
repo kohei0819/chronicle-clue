@@ -1,7 +1,9 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Chronicle-Clue</a>
+      <%= link_to root_path, class: "brand-logo", data: {"turbolinks"=>false} do %>
+        <i class="material-icons">cloud</i>Chronicle-Clue</a>
+      <% end %>   
       <a href="#" data-target="slide-out" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
