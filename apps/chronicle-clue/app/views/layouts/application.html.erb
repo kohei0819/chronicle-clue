@@ -15,11 +15,19 @@
     <header>
       <%= render :partial => "layouts/navbar" %>
 
-      <%= render :partial => "layouts/sidenavi" %>
+      <ul id="slide-out" class="sidenav">
+        <%= render :partial => "layouts/sidenavi" %>
+      </ul>
+
+      <ul class="hide-on-med-and-down sidenav sidenav-fixed">
+        <%= render :partial => "layouts/sidenavi" %>
+      </ul>
     </header>
 
     <main>
-      <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </main>
 
   </body>

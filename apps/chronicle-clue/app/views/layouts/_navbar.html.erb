@@ -1,19 +1,25 @@
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper">
-      <%= link_to root_path, class: "brand-logo", data: {"turbolinks"=>false} do %>
-        <i class="material-icons">cloud</i>Chronicle-Clue</a>
-      <% end %>   
-      <a href="#" data-target="slide-out" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <% if user_signed_in? %>
-          <li><%= link_to 'Profile', edit_user_registration_path %></li>
-          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to 'Sign up', new_user_registration_path %></li>
-          <li><%= link_to 'Log in', new_user_session_path %></li>
-        <% end %>
-      </ul>
+  <nav class="top-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="row">
+          <div class="col s12 l9">
+            <%= link_to root_path, class: "brand-logo", data: {"turbolinks"=>false} do %>
+              <i class="material-icons">cloud</i>ChronicleClue</a>
+            <% end %>   
+            <a href="#" data-target="slide-out" class="hide-on-large-only right sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <% if user_signed_in? %>
+                <li><%= link_to 'Profile', edit_user_registration_path %></li>
+                <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                <li><%= link_to 'Log in', new_user_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 </div>

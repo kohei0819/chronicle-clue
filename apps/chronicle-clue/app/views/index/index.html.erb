@@ -1,42 +1,23 @@
 <div class="row">
-
-  <div class="col s4">
-    <%= render :partial => "layouts/leftnavi" %>
-  </div>
-
-  <div class="col s8">
+  <div class="col s12">
     <ul>
-      <li>
-        <div class="card horizontal">
-          <div class="card-image">
-            <img src="https://lorempixel.com/100/190/nature/6">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.</p>
+      <% (1..10).each do |n| %>
+        <li>
+          <div class="card horizontal">
+            <div class="card-image">
+              <%= image_tag 'cinema/1.jpg', :size => '130' %>
             </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="card horizontal">
-          <div class="card-image">
-            <img src="https://lorempixel.com/100/190/nature/6">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
+            <div class="card-stacked">
+              <div class="card-content">
+                <p>No.<%= n %> I am a very simple card. I am good at containing small bits of information.</p>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     </ul>
   </div>
-
 </div>
