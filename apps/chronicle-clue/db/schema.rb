@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_17_083015) do
+ActiveRecord::Schema.define(version: 2020_12_27_104340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,6 +159,22 @@ ActiveRecord::Schema.define(version: 2020_11_17_083015) do
     t.index ["content_id"], name: "index_people_on_content_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "content_id", null: false
+    t.integer "score"
+    t.string "comment"
+    t.date "watch_date"
+    t.bigint "watch_method_id", null: false
+    t.bigint "watch_with_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_reviews_on_content_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["watch_method_id"], name: "index_reviews_on_watch_method_id"
+    t.index ["watch_with_id"], name: "index_reviews_on_watch_with_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "name_jpn"
@@ -193,6 +209,22 @@ ActiveRecord::Schema.define(version: 2020_11_17_083015) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "watch_methods", force: :cascade do |t|
+    t.string "name"
+    t.string "name_jpn"
+    t.integer "sort"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "watch_withs", force: :cascade do |t|
+    t.string "name"
+    t.string "name_jpn"
+    t.integer "sort"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "content_categories", "categories"
   add_foreign_key "content_categories", "contents"
   add_foreign_key "content_countries", "contents"
@@ -204,5 +236,9 @@ ActiveRecord::Schema.define(version: 2020_11_17_083015) do
   add_foreign_key "contents", "media"
   add_foreign_key "films", "contents"
   add_foreign_key "people", "contents"
+  add_foreign_key "reviews", "contents"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "watch_methods"
+  add_foreign_key "reviews", "watch_withs"
   add_foreign_key "user_details", "users"
 end

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @review.user_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @review.content_id %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @review.score %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @review.comment %>
+</p>
+
+<p>
+  <strong>Watch date:</strong>
+  <%= @review.watch_date %>
+</p>
+
+<p>
+  <strong>Watch method:</strong>
+  <%= @review.watch_method_id %>
+</p>
+
+<p>
+  <strong>Watch with:</strong>
+  <%= @review.watch_with_id %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

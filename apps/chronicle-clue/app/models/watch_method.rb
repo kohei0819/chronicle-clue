@@ -1,0 +1,2 @@
+class WatchMethod < ApplicationRecord
+end
