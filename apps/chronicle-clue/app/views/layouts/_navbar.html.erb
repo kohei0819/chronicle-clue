@@ -2,10 +2,12 @@
   <nav class="top-nav">
     <div class="container">
       <div class="nav-wrapper">
-        <%= link_to root_path, class: "brand-logo", data: {"turbolinks"=>false} do %>
+        <%= link_to root_path, class: "brand-logo" do %>
           <i class="material-icons">cloud</i>ChronicleClue</a>
         <% end %>   
-        <a href="#" data-target="slide-out" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
+        <%= link_to "#", class: ["right", "sidenav-trigger"], data: { target: "slide-out" } do %>
+          <i class="material-icons">menu</i>
+        <% end %>   
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if user_signed_in? %>
             <li><%= link_to 'Profile', edit_user_registration_path %></li>
