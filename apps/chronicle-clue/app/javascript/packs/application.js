@@ -20,6 +20,41 @@ import 'materialize-css/dist/js/materialize'
 
 document.addEventListener('turbolinks:load', function() {
   M.AutoInit();
+
+  if ($('.autocomplete').length > 0) {
+    const elem = document.querySelector('.autocomplete');
+    const instance = M.Autocomplete.init(elem);
+    $('.autocomplete').on('input', function(){
+      $.ajax({
+        url: '/contents/search.json',
+        type: 'GET',
+        data: {name: $('.autocomplete').val()},
+        dataType: 'json'
+      }).done(function(response) {
+        var contents1 = {};
+        var contents2 = {};
+        for (var i = 0; i < response.length; i++) {
+          contents1[response[i].name_jpn] = null;
+          contents2[response[i].name_jpn] = {
+            'id': response[i].id,
+            'name': response[i].name,
+            'name_jpn': response[i].name_jpn,
+          };
+        }
+        instance.updateData(contents1);
+      }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log('fail');
+      });
+    });
+  }
+
+  if ($('.datepicker').length > 0) {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {
+      autoClose: true,
+      format: 'yyyy/mm/dd'
+    });
+  }
 });
 
 document.addEventListener("turbolinks:before-cache", function () {

@@ -11,42 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :user_id %>
     <%= form.text_field :user_id %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :content_id %>
-    <%= form.search_field :content_id %>
+    <%= form.search_field :content_id, class: "autocomplete" %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :score %>
     <%= form.number_field :score %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :comment %>
     <%= form.text_field :comment %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :watch_date %>
-    <%= form.date_select :watch_date %>
+    <%= form.text_field :watch_date, class: "datepicker" %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :watch_method_id %>
     <%= form.text_field :watch_method_id %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :watch_with_id %>
     <%= form.text_field :watch_with_id %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="input-field">
+    <div class="actions">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>
