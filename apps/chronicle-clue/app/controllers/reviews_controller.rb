@@ -1,4 +1,5 @@
 class ReviewsController < InheritedResources::Base
+  before_action :authenticate_user!
 
   private
 

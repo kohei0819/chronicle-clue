@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="input-field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%= hidden_field_tag :user_id, current_user.id %>
 
   <div class="input-field">
-    <%= form.label :content_id %>
-    <%= form.search_field :content_id, class: "autocomplete" %>
+    <%= form.label :content %>
+    <%= form.search_field :content, class: "autocomplete" %>
+    <%= hidden_field_tag :content_id %>
   </div>
 
-  <div class="input-field">
+  <div class="field">
     <%= form.label :score %>
-    <%= form.number_field :score %>
+    <p class="range-field">
+      <%= form.range_field :score, min: 0, max: 100, step: 1 %>
+    </p>
   </div>
 
   <div class="input-field">
@@ -37,13 +37,13 @@
   </div>
 
   <div class="input-field">
+    <%= form.collection_select :watch_method_id, WatchMethod.all, :id, :name_jpn, {include_blank: "---", prompt: false } %>
     <%= form.label :watch_method_id %>
-    <%= form.text_field :watch_method_id %>
   </div>
 
   <div class="input-field">
+    <%= form.collection_select :watch_method_id, WatchWith.all, :id, :name_jpn, {include_blank: "---", prompt: false } %>
     <%= form.label :watch_with_id %>
-    <%= form.text_field :watch_with_id %>
   </div>
 
   <div class="input-field">

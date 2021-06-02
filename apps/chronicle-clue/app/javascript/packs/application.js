@@ -23,7 +23,6 @@ document.addEventListener('turbolinks:load', function() {
 
   if ($('.autocomplete').length > 0) {
     const elem = document.querySelector('.autocomplete');
-    const instance = M.Autocomplete.init(elem);
     $('.autocomplete').on('input', function(){
       $.ajax({
         url: '/contents/search.json',
@@ -41,7 +40,14 @@ document.addEventListener('turbolinks:load', function() {
             'name_jpn': response[i].name_jpn,
           };
         }
-        instance.updateData(contents1);
+        M.Autocomplete.init(elem, {
+          data: contents1,
+          onAutocomplete: function(reqdata) {
+            console.log(contents2[reqdata]);
+            console.log(contents2[reqdata]['id']);
+            $('#content_id').val(contents2[reqdata]['id']);
+          }
+        });
       }).fail(function(jqXHR, textStatus, errorThrown) {
         console.log('fail');
       });
